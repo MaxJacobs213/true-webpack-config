@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui;
+    padding: 25px;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1E1E1E;
+    color: #DADADA;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+    width: 100%;
+    max-width: 600px;
+    border-bottom: none;
+    border-radius: 15px;
+  }
+
+  li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+    background-color: #DADADA;
+    transition: background-color .2s ease;
+  }
+
+  li:first-of-type {
+    border-radius: 15px 15px 0 0;
+  }
+
+  li:last-of-type {
+    border-radius: 0 0 15px 15px;
+  }
+
+  li:hover {
+    background-color: #BB86FC;
+  }
+
+  a {
+    text-transform: capitalize;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+  }
+
+  a:visited {
+    color: #000;
+  }
+</style>
+<body>
+  <h1><%= htmlWebpackPlugin.options.title %></h1>
+  <%= pagesListHtml %>
+</body>
+</html>

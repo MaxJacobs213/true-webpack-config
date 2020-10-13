@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example</title>
+  <%= require('ejs-webpack-loader!../partials/fonts.ejs')() %>
+</head>
+<body>
+  <%= require('ejs-webpack-loader!../partials/header.ejs')() %>
+
+  <%= require('ejs-webpack-loader!../partials/footer.ejs')() %>
+</body>
+</html>
