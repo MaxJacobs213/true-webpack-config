@@ -5,9 +5,13 @@ import imageminPngquant from 'imagemin-pngquant';
 import imageminSvgo from 'imagemin-svgo';
 import CopyPlugin from "copy-webpack-plugin";
 import { IMAGES_DIRECTORY } from '../constants';
+import TerserPlugin from 'terser-webpack-plugin';
 
 export const optimizeBuild = () => ({
-  optimization: {},
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
 });
 
 export const optimizeImages = () => ({
