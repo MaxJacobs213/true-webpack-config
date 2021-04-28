@@ -10,7 +10,7 @@ import * as modules from '../modules';
 export default () => merge(
   {
     // mode: 'none',
-    entry: SOURCE_DIRECTORY,
+    entry: ['@babel/polyfill', SOURCE_DIRECTORY],
     output: {
       path: BUILD_DIRECTORY,
       filename: 'js/main.js',
