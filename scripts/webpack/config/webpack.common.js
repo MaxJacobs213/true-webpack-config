@@ -22,6 +22,7 @@ export default () => merge(
   modules.loadJavascript(),
   // modules.extractCss(),
   modules.loadImages(),
+  modules.loadMqPacker(),
   modules.loadFonts(),
   modules.setupHtml(),
 );

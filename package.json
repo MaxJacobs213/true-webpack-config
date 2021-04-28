@@ -30,6 +30,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
     "css-mqpacker": "^7.0.0",
+    "css-mqpacker-webpack-plugin": "^0.8.1",
     "cssnano": "^4.1.10",
     "ejs-webpack-loader": "^2.2.2",
     "eslint": "7.2.0",

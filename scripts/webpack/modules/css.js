@@ -1,6 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import cssnano from 'cssnano';
-import cssMqpacker from 'css-mqpacker';
+import CSSMQPackerPlugin from 'css-mqpacker-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
 
@@ -17,7 +17,6 @@ export const loadPostCss = (
 ) => {
   const plugins = [
     autoprefixer,
-    cssMqpacker,
   ];
 
   if (minify) {
@@ -34,6 +33,18 @@ export const loadPostCss = (
     },
   }
 };
+
+export const loadMqPacker = () => ({
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CSSMQPackerPlugin({
+        regExp: /\.css$/i,
+        sort: true,
+      }),
+    ],
+  },
+});
 
 export const loadCssInJs = () => ({
   module: {
@@ -77,7 +88,7 @@ export const loadProdCss = () => ({
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.s[ac]ss$|\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
           loadCss({ sourceMap: false }),
@@ -95,30 +106,16 @@ export const loadProdCss = () => ({
   ],
 });
 
-// export const loadCss = () => ({
-//   module: {
-//     rules: [
-//       {
-//         test: /\.css$/,
-//         use: [
-//           // MiniCssExtractPlugin.loader,
-//           'css-loader',
-//         ],
-//       },
-//     ],
-//   },
-//   plugins: [
-//     // new MiniCssExtractPlugin({
-//     //   filename: '[name].css',
-//     // }),
-//     // new HTMLInlineCSSWebpackPlugin({
-//     //   filter(fileName) {
-//     //     console.log('q', fileName);
-//     //     const regexp = /^(_).*\.css$/;
-//     //     console.log(regexp.test(fileName));
-//     //
-//     //     return regexp.test(fileName);
-//     //   }
-//     // }),
-//   ],
-// });
+export const loadSimpleCss = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+    ],
+  },
+});

@@ -15,4 +15,5 @@ export default () => merge(
 
   },
   modules.connectFriendlyErrors(),
+  modules.loadSimpleCss(),
 );
