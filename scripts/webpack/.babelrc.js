@@ -13,9 +13,6 @@ module.exports = (api) => {
           useBuiltIns: 'usage',
           shippedProposals: true,
           spec: true,
-          targets: {
-            node: 'current',
-          },
         },
       ],
     ],
