@@ -5,8 +5,16 @@ export const loadJavascript = () => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
+        exclude: [/node_modules\/(?!(swiper|dom7)\/).*/, /\.test\.js(x)?$/, /filters-app/, /src\/js\/filters-app/, /virtual-sales-app/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', {
+              useBuiltIns: 'usage',
+            }]],
+            plugins: ['@babel/plugin-transform-async-to-generator'],
+          },
+        },
       },
     ],
   },
