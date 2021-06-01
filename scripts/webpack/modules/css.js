@@ -1,8 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import cssnano from 'cssnano';
-import CSSMQPackerPlugin from 'css-mqpacker-webpack-plugin';
 import autoprefixer from 'autoprefixer';
-import HTMLInlineCSSWebpackPlugin from 'html-inline-css-webpack-plugin';
+import postcssSortMediaQueries from 'postcss-sort-media-queries';
 
 export const loadCss = ({ sourceMap = false } = { sourceMap: false }) => ({
   loader: 'css-loader',
@@ -16,6 +15,9 @@ export const loadPostCss = (
   { sourceMap = false, minify = false } = { sourceMap: false, minify: false }
 ) => {
   const plugins = [
+    postcssSortMediaQueries({
+      sort: 'desktop-first',
+    }),
     autoprefixer,
   ];
 
@@ -33,18 +35,6 @@ export const loadPostCss = (
     },
   }
 };
-
-export const loadMqPacker = () => ({
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CSSMQPackerPlugin({
-        regExp: /\.css$/i,
-        sort: true,
-      }),
-    ],
-  },
-});
 
 export const loadCssInJs = () => ({
   module: {
