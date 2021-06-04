@@ -1,4 +1,9 @@
 import './scss/main.scss';
-import { toUppercase } from './js/utils';
+import createProductsTable from './js/table';
+import { fetchProducts } from './js/products';
 
-console.log(toUppercase('Hello'));
+document.addEventListener('DOMContentLoaded', () => {
+  const products = fetchProducts();
+
+  createProductsTable(products);
+});
