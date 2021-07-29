@@ -11,7 +11,11 @@ export const loadJavascript = () => ({
           options: {
             presets: [['@babel/preset-env', {
               useBuiltIns: 'usage',
-            }]],
+              targets: {
+                node: 'current',
+              },
+            },
+            ]],
             plugins: ['@babel/plugin-transform-async-to-generator'],
           },
         },
